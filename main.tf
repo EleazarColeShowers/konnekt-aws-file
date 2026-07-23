@@ -391,7 +391,7 @@ resource "aws_launch_template" "konnekt_lt" {
   user_data = base64encode(<<-EOF
     #!/bin/bash
     yum update -y
-    yum install -y nginx
+    amazon-linux-extras install -y nginx1
     systemctl start nginx
     systemctl enable nginx
     echo "<h1>Konnekt Backend — Instance $(hostname)</h1>" > /usr/share/nginx/html/index.html

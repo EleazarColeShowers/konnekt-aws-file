@@ -57,6 +57,14 @@ cd konnekt-aws-infrastructure
 ```
 
 ### 3. Deploy
+
+Using the Makefile (recommended — wraps the commands below):
+```bash
+make test     # Format check + validate + dry-run plan (no AWS resources touched)
+make apply    # Deploy to AWS (type 'yes' to confirm)
+```
+
+Or run Terraform directly:
 ```bash
 terraform init     # Download AWS provider
 terraform plan     # Preview what will be created
@@ -74,7 +82,8 @@ Open that URL in your browser — you'll see the Konnekt welcome page.
 
 ## Teardown (avoid AWS charges)
 ```bash
-terraform destroy
+make destroy
+# or: terraform destroy
 ```
 This removes **all** resources created by this project.
 
@@ -85,5 +94,6 @@ konnekt-aws/
 ├── variables.tf    # Configurable parameters
 ├── outputs.tf      # Values printed after deployment
 ├── index.html      # Static webpage uploaded to S3
+├── Makefile        # Automation: make init / plan / apply / destroy / test
 └── README.md       # This file
 ```
